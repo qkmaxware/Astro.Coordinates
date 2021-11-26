@@ -26,7 +26,7 @@ public class HorizontalObserver {
     /// </summary>
     /// <returns>transformation</returns>
     public ITransformation<HorizontalCoordinates, EquatorialCoordinate> TransformationTo(EquatorialCoordinate frame) {
-        var gmst = Angle.Hours(this.ObservationTime.GreenwichMeanSiderealTime().TotalHours);
+        var gmst = Angle.Hours(this.ObservationTime.GreenwichMeanSiderealTime().TotalHours());
         // local mean sidereal time = GMST + east longitude
         var lmst = gmst + this.ObservationLocation.Longitude;
         return new HorizontalToEquatorial(lmst, this.ObservationLocation.Latitude);

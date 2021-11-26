@@ -28,7 +28,7 @@ public class EquatorialGeocentric {
     /// </summary>
     /// <returns>transformation</returns>
     public ITransformation<EquatorialCoordinate, HorizontalCoordinates> TransformationTo(HorizontalObserver frame) {
-        var gmst = Angle.Hours(frame.ObservationTime.GreenwichMeanSiderealTime().TotalHours);
+        var gmst = Angle.Hours(frame.ObservationTime.GreenwichMeanSiderealTime().TotalHours());
         // local mean sidereal time = GMST + east longitude
         var lmst = gmst + frame.ObservationLocation.Longitude;
         return new EquatorialToHorizontal(lmst, frame.ObservationLocation.Latitude);
